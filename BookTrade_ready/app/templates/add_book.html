@@ -1,14 +1,47 @@
 {% extends "base.html" %}
 {% block content %}
-  <h2>Добавить книгу</h2>
-  <form method="POST">
+  <h2 class="mb-4">Добавить новую книгу</h2>
+
+  <form method="POST" enctype="multipart/form-data">
     {{ form.hidden_tag() }}
-    {{ form.title.label }} {{ form.title(class="form-control") }}<br>
-    {{ form.author.label }} {{ form.author(class="form-control") }}<br>
-    {{ form.genre.label }} {{ form.genre(class="form-control") }}<br>
-    {{ form.condition.label }} {{ form.condition(class="form-control") }}<br>
-    {{ form.description.label }} {{ form.description(class="form-control") }}<br>
-    {{ form.link.label }} {{ form.link(class="form-control") }}<br>   {# Новое поле #}
-    {{ form.submit(class="btn btn-primary") }}
+
+    <div class="mb-3">
+      {{ form.title.label(class="form-label") }}
+      {{ form.title(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+      {{ form.author.label(class="form-label") }}
+      {{ form.author(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+      {{ form.genre.label(class="form-label") }}
+      {{ form.genre(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+      {{ form.condition.label(class="form-label") }}
+      {{ form.condition(class="form-select") }}
+    </div>
+
+    <div class="mb-3">
+      {{ form.description.label(class="form-label") }}
+      {{ form.description(class="form-control", rows=3) }}
+    </div>
+
+    <div class="mb-3">
+      {{ form.link.label(class="form-label") }}
+      {{ form.link(class="form-control") }}
+    </div>
+
+    <div class="mb-3">
+      {{ form.cover_image.label(class="form-label") }}
+      {{ form.cover_image(class="form-control") }}
+    </div>
+
+    <button type="submit" class="btn btn-success">
+      {{ form.submit.label.text }}
+    </button>
   </form>
 {% endblock %}
